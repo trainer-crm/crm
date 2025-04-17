@@ -2,7 +2,10 @@
   "name": "@acme/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "api": "pnpm nx run rails-app:serve",
+    "website": "pnpm nx run website:dev"
+  },
   "private": true,
   "dependencies": {
     "react": "18.3.1",

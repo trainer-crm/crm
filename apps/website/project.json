@@ -5,5 +5,39 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project website --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/website"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "website:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "website:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "website:build:production",
+          "hmr": false
+        }
+      }
+    }
+  }
 }

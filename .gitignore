@@ -38,8 +38,99 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Nx
 .nx/cache
 .nx/workspace-data
 
+# Vite
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
+
+# Next.js
+.next
+out
+
+# Rails specific
+# Ruby
+*.rbc
+capybara-*.html
+.rspec
+*.orig
+rerun.txt
+pickle-email-*.html
+
+# Database
+**/db/*.sqlite3
+**/db/*.sqlite3-journal
+**/db/*.sqlite3-[0-9]*
+
+# Logs and temp files
+**/log/*
+**/tmp/*
+!**/log/.keep
+!**/tmp/.keep
+
+# Sensitive files
+**/config/initializers/secret_token.rb
+**/config/master.key
+
+# Environment files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# Bundle and vendor
+**/.bundle
+**/vendor/bundle
+
+# RVM
+.rvmrc
+
+# Bower
+**/vendor/assets/bower_components
+*.bowerrc
+bower.json
+
+# Pow
+.powenv
+
+# Byebug
+.byebug_history
+
+# Rails assets
+**/public/packs
+**/public/packs-test
+**/public/assets
+**/public/system
+**/public/uploads
+
+# Yarn
+yarn-debug.log*
+.yarn-integrity
+
+# Storage
+**/storage/*
+!**/storage/.keep
+
+# Coverage
+**/coverage/
+
+# Spec
+**/spec/tmp/
+
+# CMS specific
+**/apps/cms/generated/
+**/apps/cms/migrations/
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+**/out/
+
+# Cache
+**/.cache/
+**/.turbo/
+**/.vercel/

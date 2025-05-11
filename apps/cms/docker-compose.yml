@@ -1,0 +1,59 @@
+# Only for Development.
+# Should be started from workspace root.
+
+# Hard coded environment variables is a valid workaround for using database images locally.
+# Should match what we get from `process.env.DATABASE_URI`.
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - 27017:27017
+    command:
+      - --storageEngine=wiredTiger
+    environment:
+      - MONGO_DB=cms
+    networks:
+      - local
+    volumes:
+      - data:/data/db
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cms
+    networks:
+      - local
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  cms:
+    container_name: cms
+    image: cms
+    build:
+      context: ../../
+      dockerfile: apps/cms/Dockerfile
+    ports:
+      - 3000:3000
+    env_file:
+      - .env.docker
+    networks:
+      - local
+    depends_on:
+      - mongodb
+      - postgres
+
+networks:
+  local:
+    name: payload-local
+    driver: bridge
+
+volumes:
+  data:
+  pgdata:

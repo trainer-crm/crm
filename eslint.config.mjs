@@ -1,4 +1,5 @@
 import nx from '@nx/eslint-plugin';
+globalThis.structuredClone = globalThis.structuredClone || ((obj) => JSON.parse(JSON.stringify(obj)));
 
 export default [
   ...nx.configs['flat/base'],

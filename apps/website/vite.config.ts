@@ -3,6 +3,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+// Polyfill webcrypto.getRandomValues via Crypto.prototype
+import { webcrypto } from 'crypto';
+
+const cryptoProto = Object.getPrototypeOf(globalThis.crypto);
+if (!cryptoProto.getRandomValues) {
+  Object.defineProperty(cryptoProto, 'getRandomValues', {
+    value: webcrypto.getRandomValues.bind(webcrypto),
+    configurable: true,
+  });
+}
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -10,6 +20,8 @@ export default defineConfig(() => ({
   server: {
     port: 4200,
     host: 'localhost',
+    // Enable history API fallback for React Router
+    historyApiFallback: true,
   },
   preview: {
     port: 4300,
@@ -26,6 +38,14 @@ export default defineConfig(() => ({
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
+    },
+    // Ensure proper handling of client-side routing in production
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
     },
   },
 }));

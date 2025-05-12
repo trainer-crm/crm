@@ -1,0 +1,8 @@
+{
+  "name": "monitoring",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/monitoring",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

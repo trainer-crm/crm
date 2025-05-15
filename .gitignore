@@ -73,6 +73,7 @@ pickle-email-*.html
 # Sensitive files
 **/config/initializers/secret_token.rb
 **/config/master.key
+**/config/credentials.yml.enc
 
 # Environment files
 .env
@@ -135,5 +136,6 @@ yarn-debug.log*
 **/.turbo/
 **/.vercel/
 
-
 storybook-static
+# Stripe
+**/config/secrets.yml

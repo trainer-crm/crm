@@ -65,17 +65,6 @@
       }
     },
     {
-      "plugin": "@cdwr/nx-payload/plugin",
-      "options": {
-        "generateTargetName": "gen",
-        "payloadTargetName": "payload",
-        "payloadGraphqlTargetName": "payload-graphql",
-        "dxPostgresTargetName": "dx:postgres",
-        "dxStartTargetName": "dx:start",
-        "dxStopTargetName": "dx:stop"
-      }
-    },
-    {
       "plugin": "@nx/next/plugin",
       "options": {
         "startTargetName": "start",

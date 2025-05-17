@@ -1,18 +1,12 @@
 /// <reference types='vitest' />
+// Patch Node’s webcrypto into the browser global
+import { webcrypto } from 'crypto';
+
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-// Polyfill webcrypto.getRandomValues via Crypto.prototype
-import { webcrypto } from 'crypto';
-
-const cryptoProto = Object.getPrototypeOf(globalThis.crypto);
-if (!cryptoProto.getRandomValues) {
-  Object.defineProperty(cryptoProto, 'getRandomValues', {
-    value: webcrypto.getRandomValues.bind(webcrypto),
-    configurable: true,
-  });
-}
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -23,11 +17,15 @@ export default defineConfig(() => ({
     // Enable history API fallback for React Router
     historyApiFallback: true,
   },
-  preview: {
+  preview: {  
     port: 4300,
     host: 'localhost',
-  },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+},
+  plugins: [
+    react(),
+    nxViteTsPaths(),
+    nxCopyAssetsPlugin(['*.md'])
+  ],
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],

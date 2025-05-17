@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+
+    "jsx": "react-jsx",
+
+    "types": ["vite/client", "storybook__react", "vitest/globals"],
+
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "src/**/*",
+    ".storybook/**/*",
+    "tailwind.config.ts",
+    "postcss.config.js"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
+}

@@ -38,6 +38,13 @@
           "hmr": false
         }
       }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "configDir": "../../.storybook",
+        "browserTarget": "website:build"
+      }
     }
   }
 }

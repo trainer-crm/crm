@@ -140,3 +140,6 @@ storybook-static
 
 # Stripe
 **/config/secrets.yml
+
+
+storybook-static

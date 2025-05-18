@@ -2,17 +2,18 @@
   "name": "@crm/source",
   "version": "0.0.0",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "api": "pnpm nx run rails-app:serve",
     "website": "pnpm nx run website:dev",
     "storybook": "pnpm nx run storybook -p 4040 --config-dir=.storybook"
   },
-  "private": true,
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.20.0",
     "@payloadcms/db-postgres": "^3.35.1",
     "@payloadcms/next": "^3.20.0",
     "@payloadcms/richtext-lexical": "^3.20.0",
+    "@payloadcms/graphql": "^3.20.0",
     "graphql": "^16.10.0",
     "next": "~15.2.4",
     "payload": "^3.35.1",
@@ -42,7 +43,6 @@
     "@nx/vite": "21.0.3",
     "@nx/web": "21.0.3",
     "@nx/workspace": "21.0.3",
-    "@payloadcms/graphql": "^3.20.0",
     "@playwright/test": "^1.36.0",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-links": "^8.6.14",

@@ -11,7 +11,7 @@
   "include": [
     "src/**/*",
     ".storybook/**/*",
-    "tailwind.config.ts",
+    "tailwind.config.js",
     "postcss.config.js"
   ],
   "exclude": [

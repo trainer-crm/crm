@@ -137,5 +137,12 @@ yarn-debug.log*
 **/.vercel/
 
 storybook-static
+
 # Stripe
 **/config/secrets.yml
+
+storybook-static
+# Stripe
+**/config/secrets.yml
+
+
